@@ -1,0 +1,1116 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- =========================================================
+     HERO SLIDER
+========================================================= -->
+
+<section class="premium-hero">
+
+    <div id="studentHeroCarousel"
+         class="carousel slide carousel-fade"
+         data-bs-ride="carousel"
+         data-bs-interval="6000">
+
+        <div class="carousel-indicators">
+            <button type="button"
+                    data-bs-target="#studentHeroCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1">
+            </button>
+
+            <button type="button"
+                    data-bs-target="#studentHeroCarousel"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2">
+            </button>
+
+            <button type="button"
+                    data-bs-target="#studentHeroCarousel"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3">
+            </button>
+        </div>
+
+
+        <div class="carousel-inner">
+
+
+            <!-- SLIDE 1 -->
+            <div class="carousel-item active">
+
+                <div class="hero-slide hero-slide-one">
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="container hero-content">
+
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-7">
+
+                                <div class="hero-badge-new">
+                                    <span class="status-dot"></span>
+                                    SMART STUDENT MANAGEMENT
+                                </div>
+
+                                <h1 class="hero-title">
+                                    Manage Students.
+                                    <span>Smarter.</span>
+                                </h1>
+
+                                <p class="hero-description">
+                                    A modern student management platform built
+                                    to organize student records, profiles and
+                                    administration in one powerful place.
+                                </p>
+
+                                <div class="hero-actions">
+
+                                    @if (User.Identity?.IsAuthenticated == true)
+                                    {
+                                        if (User.IsInRole("Admin"))
+                                        {
+                                            <a asp-controller="StudentDetails"
+                                               asp-action="Index"
+                                               class="premium-primary-btn">
+
+                                                <i class="bi bi-grid-1x2-fill"></i>
+                                                Open Dashboard
+
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="StudentDetails"
+                                               asp-action="MyProfile"
+                                               class="premium-primary-btn">
+
+                                                <i class="bi bi-person-circle"></i>
+                                                View My Profile
+
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <a asp-area="Identity"
+                                           asp-page="/Account/Login"
+                                           class="premium-primary-btn">
+
+                                            <i class="bi bi-arrow-right-circle-fill"></i>
+                                            Get Started
+
+                                        </a>
+                                    }
+
+                                    <a href="#features"
+                                       class="premium-secondary-btn">
+
+                                        Explore Platform
+                                        <i class="bi bi-arrow-down"></i>
+
+                                    </a>
+
+                                </div>
+
+                                <div class="hero-trust">
+
+                                    <div class="trust-item">
+                                        <i class="bi bi-shield-check"></i>
+                                        <span>Secure Access</span>
+                                    </div>
+
+                                    <div class="trust-item">
+                                        <i class="bi bi-cloud-check"></i>
+                                        <span>Cloud Powered</span>
+                                    </div>
+
+                                    <div class="trust-item">
+                                        <i class="bi bi-phone"></i>
+                                        <span>Responsive</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-5 d-none d-lg-block">
+
+                                <div class="hero-floating-card">
+
+                                    <div class="floating-card-top">
+
+                                        <div>
+                                            <span class="small-label">
+                                                PLATFORM STATUS
+                                            </span>
+
+                                            <h5>
+                                                Student Portal
+                                            </h5>
+                                        </div>
+
+                                        <div class="live-status">
+                                            <span></span>
+                                            Live
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="mini-stat-grid">
+
+                                        <div class="mini-stat">
+
+                                            <div class="mini-stat-icon blue">
+                                                <i class="bi bi-people-fill"></i>
+                                            </div>
+
+                                            <div>
+                                                <strong>Students</strong>
+                                                <small>Centralized records</small>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="mini-stat">
+
+                                            <div class="mini-stat-icon purple">
+                                                <i class="bi bi-cloud-fill"></i>
+                                            </div>
+
+                                            <div>
+                                                <strong>Firebase</strong>
+                                                <small>Cloud database</small>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="mini-stat">
+
+                                            <div class="mini-stat-icon green">
+                                                <i class="bi bi-shield-lock-fill"></i>
+                                            </div>
+
+                                            <div>
+                                                <strong>Protected</strong>
+                                                <small>Secure authentication</small>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="floating-progress">
+
+                                        <div class="progress-heading">
+                                            <span>System performance</span>
+                                            <strong>Excellent</strong>
+                                        </div>
+
+                                        <div class="custom-progress">
+                                            <span></span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 2 -->
+            <div class="carousel-item">
+
+                <div class="hero-slide hero-slide-two">
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="container hero-content">
+
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-7">
+
+                                <div class="hero-badge-new">
+                                    <span class="status-dot"></span>
+                                    ONE PLATFORM. COMPLETE CONTROL.
+                                </div>
+
+                                <h1 class="hero-title">
+                                    Every Student
+                                    <span>In One Place.</span>
+                                </h1>
+
+                                <p class="hero-description">
+                                    Access student information quickly,
+                                    update profiles effortlessly and keep
+                                    important records organized.
+                                </p>
+
+                                <div class="hero-actions">
+
+                                    @if (User.Identity?.IsAuthenticated == true)
+                                    {
+                                        if (User.IsInRole("Admin"))
+                                        {
+                                            <a asp-controller="StudentDetails"
+                                               asp-action="Index"
+                                               class="premium-primary-btn">
+
+                                                <i class="bi bi-people-fill"></i>
+                                                Manage Students
+
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="StudentDetails"
+                                               asp-action="MyProfile"
+                                               class="premium-primary-btn">
+
+                                                <i class="bi bi-person-vcard-fill"></i>
+                                                My Profile
+
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <a asp-area="Identity"
+                                           asp-page="/Account/Register"
+                                           class="premium-primary-btn">
+
+                                            <i class="bi bi-person-plus-fill"></i>
+                                            Create Account
+
+                                        </a>
+                                    }
+
+                                    <a href="#features"
+                                       class="premium-secondary-btn">
+
+                                        Discover Features
+                                        <i class="bi bi-arrow-right"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 3 -->
+            <div class="carousel-item">
+
+                <div class="hero-slide hero-slide-three">
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="container hero-content">
+
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-7">
+
+                                <div class="hero-badge-new">
+                                    <span class="status-dot"></span>
+                                    BUILT FOR MODERN EDUCATION
+                                </div>
+
+                                <h1 class="hero-title">
+                                    Simple.
+                                    <span>Secure. Powerful.</span>
+                                </h1>
+
+                                <p class="hero-description">
+                                    From student profiles to cloud-powered
+                                    records, everything is designed for a
+                                    smoother management experience.
+                                </p>
+
+                                <div class="hero-actions">
+
+                                    @if (User.Identity?.IsAuthenticated == true)
+                                    {
+                                        <a asp-controller="StudentDetails"
+                                           asp-action="Index"
+                                           class="premium-primary-btn">
+
+                                            <i class="bi bi-speedometer2"></i>
+                                            Go to Dashboard
+
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-area="Identity"
+                                           asp-page="/Account/Login"
+                                           class="premium-primary-btn">
+
+                                            <i class="bi bi-box-arrow-in-right"></i>
+                                            Login to Portal
+
+                                        </a>
+                                    }
+
+                                    <a href="#features"
+                                       class="premium-secondary-btn">
+
+                                        Learn More
+                                        <i class="bi bi-arrow-right"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#studentHeroCarousel"
+                data-bs-slide="prev">
+
+            <span class="hero-control">
+                <i class="bi bi-arrow-left"></i>
+            </span>
+
+            <span class="visually-hidden">
+                Previous
+            </span>
+
+        </button>
+
+
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#studentHeroCarousel"
+                data-bs-slide="next">
+
+            <span class="hero-control">
+                <i class="bi bi-arrow-right"></i>
+            </span>
+
+            <span class="visually-hidden">
+                Next
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     QUICK STATS
+========================================================= -->
+
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="stats-wrapper">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+
+                <div>
+                    <span>Platform</span>
+                    <h3>Student Management</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-divider"></div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="bi bi-cloud-fill"></i>
+                </div>
+
+                <div>
+                    <span>Database</span>
+                    <h3>Firebase Cloud</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-divider"></div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+                <div>
+                    <span>Authentication</span>
+                    <h3>Secure Access</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-divider"></div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="bi bi-activity"></i>
+                </div>
+
+                <div>
+                    <span>System Status</span>
+                    <h3>Operational</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
+
+<section class="intro-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-eyebrow">
+                <span></span>
+                WHY THIS PLATFORM
+            </div>
+
+            <h2>
+                Everything you need to manage
+                <span>student information.</span>
+            </h2>
+
+            <p>
+                A clean and powerful platform that brings student
+                management, secure authentication and cloud storage
+                together in one place.
+            </p>
+
+        </div>
+
+
+        <div class="intro-grid">
+
+            <div class="intro-large-card">
+
+                <div class="intro-card-content">
+
+                    <div class="intro-icon">
+                        <i class="bi bi-diagram-3-fill"></i>
+                    </div>
+
+                    <span class="card-label">
+                        CENTRALIZED MANAGEMENT
+                    </span>
+
+                    <h3>
+                        One workspace for
+                        your student records.
+                    </h3>
+
+                    <p>
+                        Manage student profiles and information
+                        through an organized, intuitive interface
+                        designed for everyday use.
+                    </p>
+
+                    <div class="intro-checks">
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Easy student management
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Quick profile access
+                        </div>
+
+                        <div>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Cloud-based records
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="intro-decoration">
+
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+
+                    <div class="decoration-icon icon-one">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <div class="decoration-icon icon-two">
+                        <i class="bi bi-database-fill"></i>
+                    </div>
+
+                    <div class="decoration-icon icon-three">
+                        <i class="bi bi-shield-fill-check"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="intro-side">
+
+                <div class="side-info-card">
+
+                    <div class="side-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+
+                    <div>
+                        <span>FAST EXPERIENCE</span>
+                        <h4>Simple & Efficient</h4>
+                        <p>
+                            Find and manage information without
+                            unnecessary complexity.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="side-info-card">
+
+                    <div class="side-icon purple">
+                        <i class="bi bi-lock-fill"></i>
+                    </div>
+
+                    <div>
+                        <span>SECURE PLATFORM</span>
+                        <h4>Protected Access</h4>
+                        <p>
+                            Authentication and role-based access
+                            keep the portal organized.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section id="features" class="features-section">
+
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <div class="section-eyebrow">
+                <span></span>
+                PLATFORM FEATURES
+                <span></span>
+            </div>
+
+            <h2>
+                Built around the way
+                <span>students are managed.</span>
+            </h2>
+
+            <p>
+                Powerful functionality wrapped inside a modern,
+                easy-to-use experience.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- CARD 1 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-premium-card">
+
+                    <div class="feature-top">
+
+                        <div class="feature-icon blue">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+
+                        <span class="feature-number">
+                            01
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Student Management
+                    </h3>
+
+                    <p>
+                        Create, view, update and manage student
+                        profiles through a centralized system.
+                    </p>
+
+                    <div class="feature-link">
+                        Organized Records
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 2 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-premium-card">
+
+                    <div class="feature-top">
+
+                        <div class="feature-icon purple">
+                            <i class="bi bi-cloud-fill"></i>
+                        </div>
+
+                        <span class="feature-number">
+                            02
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Firebase Cloud
+                    </h3>
+
+                    <p>
+                        Store student information using cloud-powered
+                        Firebase database infrastructure.
+                    </p>
+
+                    <div class="feature-link">
+                        Cloud Powered
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 3 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-premium-card">
+
+                    <div class="feature-top">
+
+                        <div class="feature-icon green">
+                            <i class="bi bi-shield-lock-fill"></i>
+                        </div>
+
+                        <span class="feature-number">
+                            03
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Secure Authentication
+                    </h3>
+
+                    <p>
+                        Secure login, registration and role-based
+                        access for students and administrators.
+                    </p>
+
+                    <div class="feature-link">
+                        Protected Access
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 4 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-premium-card">
+
+                    <div class="feature-top">
+
+                        <div class="feature-icon orange">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+
+                        <span class="feature-number">
+                            04
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Easy Editing
+                    </h3>
+
+                    <p>
+                        Update student information quickly using
+                        a simple and intuitive profile interface.
+                    </p>
+
+                    <div class="feature-link">
+                        Easy Updates
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 5 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-premium-card">
+
+                    <div class="feature-top">
+
+                        <div class="feature-icon pink">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+
+                        <span class="feature-number">
+                            05
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Fast Experience
+                    </h3>
+
+                    <p>
+                        Lightweight interfaces make everyday
+                        student management smooth and efficient.
+                    </p>
+
+                    <div class="feature-link">
+                        Smooth Workflow
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CARD 6 -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="feature-premium-card">
+
+                    <div class="feature-top">
+
+                        <div class="feature-icon cyan">
+                            <i class="bi bi-phone-fill"></i>
+                        </div>
+
+                        <span class="feature-number">
+                            06
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Responsive Design
+                    </h3>
+
+                    <p>
+                        A responsive experience designed to work
+                        beautifully across desktop, tablet and mobile.
+                    </p>
+
+                    <div class="feature-link">
+                        Every Device
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECURITY / CLOUD SECTION
+========================================================= -->
+
+<section class="technology-section">
+
+    <div class="container">
+
+        <div class="technology-card">
+
+            <div class="technology-content">
+
+                <div class="section-eyebrow light">
+                    <span></span>
+                    MODERN TECHNOLOGY
+                </div>
+
+                <h2>
+                    Designed for a
+                    <span>connected campus.</span>
+                </h2>
+
+                <p>
+                    Your student management experience is supported
+                    by modern web technologies and cloud infrastructure.
+                </p>
+
+                <div class="technology-points">
+
+                    <div class="technology-point">
+
+                        <div class="technology-point-icon">
+                            <i class="bi bi-cloud-check-fill"></i>
+                        </div>
+
+                        <div>
+                            <strong>
+                                Firebase Cloud
+                            </strong>
+
+                            <span>
+                                Reliable cloud-based data storage
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="technology-point">
+
+                        <div class="technology-point-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+
+                        <div>
+                            <strong>
+                                Secure Authentication
+                            </strong>
+
+                            <span>
+                                Controlled access for users
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="technology-point">
+
+                        <div class="technology-point-icon">
+                            <i class="bi bi-window-stack"></i>
+                        </div>
+
+                        <div>
+                            <strong>
+                                Modern Web Interface
+                            </strong>
+
+                            <span>
+                                Clean and responsive user experience
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="technology-visual">
+
+                <div class="tech-circle circle-one"></div>
+                <div class="tech-circle circle-two"></div>
+
+                <div class="tech-main-icon">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+
+                <div class="tech-floating-card cloud">
+                    <i class="bi bi-cloud-fill"></i>
+                    Firebase
+                </div>
+
+                <div class="tech-floating-card security">
+                    <i class="bi bi-shield-fill-check"></i>
+                    Secure
+                </div>
+
+                <div class="tech-floating-card users">
+                    <i class="bi bi-people-fill"></i>
+                    Students
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="final-cta-section">
+
+    <div class="container">
+
+        <div class="final-cta">
+
+            <div class="cta-glow"></div>
+
+            <div class="cta-content">
+
+                <div class="cta-icon">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        STUDENT MANAGEMENT PLATFORM
+                    </span>
+
+                    <h2>
+                        Ready to manage students smarter?
+                    </h2>
+
+                    <p>
+                        Experience a clean, secure and modern
+                        student management system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cta-action">
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="StudentDetails"
+                       asp-action="Index"
+                       class="cta-button">
+
+                        Open Dashboard
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+                }
+                else
+                {
+                    <a asp-area="Identity"
+                       asp-page="/Account/Register"
+                       class="cta-button">
+
+                        Create Account
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,1153 @@
+﻿@model IEnumerable<StudentManagementSystem.Models.StudentDetail>
+
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<div class="dashboard-page">
+
+    <div class="container py-5">
+
+        <!-- ============================= -->
+        <!-- PAGE HEADER -->
+        <!-- ============================= -->
+
+        <div class="dashboard-hero animate-page">
+
+            <div>
+                <div class="page-eyebrow">
+                    <span class="status-dot"></span>
+                    ADMIN DASHBOARD
+                </div>
+
+                <h1 class="dashboard-title">
+                    Student Management
+                </h1>
+
+                <p class="dashboard-description">
+                    Manage, monitor and organize all student profiles
+                    from one modern and secure workspace.
+                </p>
+            </div>
+
+            <div class="dashboard-header-actions">
+
+                <div class="connection-badge">
+                    <span class="live-dot"></span>
+                    <i class="bi bi-database-check"></i>
+                    Firebase Connected
+                </div>
+
+                <a asp-action="Create"
+                   class="premium-primary-btn">
+                    <i class="bi bi-person-plus-fill"></i>
+                    Add Student
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- QUICK STATS -->
+        <!-- ============================= -->
+
+        <div class="dashboard-stats">
+
+            <div class="dashboard-stat-card stat-blue animate-card">
+
+                <div class="dashboard-stat-icon">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+
+                <div>
+                    <span>Total Students</span>
+                    <h3>@Model.Count()</h3>
+                    <small>Registered profiles</small>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card stat-purple animate-card delay-1">
+
+                <div class="dashboard-stat-icon">
+                    <i class="bi bi-cloud-check-fill"></i>
+                </div>
+
+                <div>
+                    <span>Database</span>
+                    <h3>Cloud</h3>
+                    <small>Firebase powered</small>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card stat-green animate-card delay-2">
+
+                <div class="dashboard-stat-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+                <div>
+                    <span>Security</span>
+                    <h3>Secure</h3>
+                    <small>Protected access</small>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat-card stat-cyan animate-card delay-3">
+
+                <div class="dashboard-stat-icon">
+                    <i class="bi bi-activity"></i>
+                </div>
+
+                <div>
+                    <span>System</span>
+                    <h3>Active</h3>
+                    <small>All services operational</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- STUDENTS TABLE -->
+        <!-- ============================= -->
+
+        <div class="students-glass-card animate-card delay-2">
+
+            <div class="students-card-header">
+
+                <div class="students-title-wrapper">
+
+                    <div class="table-main-icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <div>
+
+                        <div class="section-eyebrow-small">
+                            STUDENT RECORDS
+                        </div>
+
+                        <h2>
+                            All Students
+                        </h2>
+
+                        <p>
+                            @Model.Count() student record(s) available
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="records-badge">
+                    <i class="bi bi-database"></i>
+                    Live Records
+                </div>
+
+            </div>
+
+
+            @if (!Model.Any())
+            {
+                <!-- ============================= -->
+                <!-- EMPTY STATE -->
+                <!-- ============================= -->
+
+                <div class="modern-empty-state">
+
+                    <div class="empty-floating-icon">
+                        <i class="bi bi-person-x"></i>
+                    </div>
+
+                    <h3>
+                        No Students Found
+                    </h3>
+
+                    <p>
+                        There are currently no student records
+                        in the system.
+                    </p>
+
+                    <a asp-action="Create"
+                       class="premium-primary-btn mt-3">
+                        <i class="bi bi-person-plus-fill"></i>
+                        Add First Student
+                    </a>
+
+                </div>
+            }
+            else
+            {
+
+                <!-- ============================= -->
+                <!-- TABLE -->
+                <!-- ============================= -->
+
+                <div class="table-responsive modern-table-wrapper">
+
+                    <table class="modern-student-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Student</th>
+
+                                <th>Email</th>
+
+                                <th>Address</th>
+
+                                <th>Father</th>
+
+                                <th>Contact</th>
+
+                                <th>Age</th>
+
+                                <th class="text-end">
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+
+                                var initial =
+                                    string.IsNullOrEmpty(item.FullName)
+                                    ? "S"
+                                    : item.FullName.Substring(0, 1).ToUpper();
+
+                                <tr class="student-row">
+
+                                    <!-- STUDENT -->
+
+                                    <td>
+
+                                        <div class="student-info">
+
+                                            <div class="student-avatar-modern">
+                                                @initial
+                                            </div>
+
+                                            <div>
+
+                                                <strong>
+                                                    @item.FullName
+                                                </strong>
+
+                                                <small>
+                                                    Student Profile
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- EMAIL -->
+
+                                    <td>
+
+                                        <span class="student-email">
+                                            <i class="bi bi-envelope"></i>
+                                            @item.Email
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- ADDRESS -->
+
+                                    <td>
+
+                                        <span class="student-secondary">
+                                            <i class="bi bi-geo-alt"></i>
+                                            @item.Address
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- FATHER -->
+
+                                    <td>
+
+                                        <span class="student-secondary">
+                                            @item.FatherName
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- CONTACT -->
+
+                                    <td>
+
+                                        <span class="student-secondary">
+                                            <i class="bi bi-telephone"></i>
+                                            @item.Contact
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- AGE -->
+
+                                    <td>
+
+                                        <span class="modern-age-badge">
+                                            @item.Age
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- ACTIONS -->
+
+                                    <td>
+
+                                        <div class="modern-action-buttons">
+
+                                            <a asp-action="Details"
+                                               asp-route-id="@item.Id"
+                                               class="modern-action view"
+                                               title="View Student">
+
+                                                <i class="bi bi-eye"></i>
+
+                                            </a>
+
+
+                                            <a asp-action="Edit"
+                                               asp-route-id="@item.Id"
+                                               class="modern-action edit"
+                                               title="Edit Student">
+
+                                                <i class="bi bi-pencil-square"></i>
+
+                                            </a>
+
+
+                                            <a asp-action="Delete"
+                                               asp-route-id="@item.Id"
+                                               class="modern-action delete"
+                                               title="Delete Student">
+
+                                                <i class="bi bi-trash3"></i>
+
+                                            </a>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            }
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- BOTTOM INFO -->
+        <!-- ============================= -->
+
+        <div class="dashboard-bottom-info animate-card delay-3">
+
+            <div>
+
+                <i class="bi bi-shield-check"></i>
+
+                <div>
+
+                    <strong>
+                        Secure Student Management
+                    </strong>
+
+                    <span>
+                        Student records are protected through
+                        authenticated access and Firebase cloud storage.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <span></span>
+
+                System Operational
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+    /* ==========================================
+       DASHBOARD PAGE
+    ========================================== */
+
+    .dashboard-page {
+        min-height: 90vh;
+        padding-bottom: 70px;
+        background:
+            radial-gradient(
+                circle at 10% 5%,
+                rgba(79,140,255,.10),
+                transparent 28%
+            ),
+            radial-gradient(
+                circle at 90% 20%,
+                rgba(155,124,255,.08),
+                transparent 28%
+            );
+    }
+
+
+    /* ==========================================
+       ANIMATIONS
+    ========================================== */
+
+    .animate-page {
+        animation: pageEnter .7s ease both;
+    }
+
+    .animate-card {
+        animation: cardEnter .7s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .delay-1 {
+        animation-delay: .10s;
+    }
+
+    .delay-2 {
+        animation-delay: .20s;
+    }
+
+    .delay-3 {
+        animation-delay: .30s;
+    }
+
+    @@keyframes pageEnter {
+
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    @@keyframes cardEnter {
+
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+    }
+
+
+    /* ==========================================
+       HEADER
+    ========================================== */
+
+    .dashboard-hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 30px;
+        margin-bottom: 35px;
+    }
+
+    .page-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 14px;
+        color: #8db8ff;
+        font-size: .65rem;
+        font-weight: 850;
+        letter-spacing: 1.7px;
+    }
+
+    .dashboard-title {
+        margin: 0;
+        color: white;
+        font-size: clamp(2.5rem,5vw,4.5rem);
+        line-height: 1;
+        letter-spacing: -2.8px;
+        font-weight: 850;
+    }
+
+    .dashboard-title span {
+        display: block;
+
+        background:
+            linear-gradient(
+                100deg,
+                #70a9ff,
+                #22d3ee 45%,
+                #a78bfa
+            );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .dashboard-description {
+        max-width: 580px;
+        margin: 18px 0 0;
+        color: #7f8da3;
+        line-height: 1.8;
+        font-size: .85rem;
+    }
+
+    .dashboard-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .connection-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 11px 14px;
+
+        border:
+            1px solid rgba(34,197,94,.18);
+
+        border-radius: 12px;
+
+        color: #86efac;
+
+        background:
+            rgba(34,197,94,.07);
+
+        font-size: .68rem;
+        font-weight: 700;
+    }
+
+    .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 12px rgba(34,197,94,.8);
+        animation: livePulse 2s infinite;
+    }
+
+    @@keyframes livePulse {
+
+        0%,100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: .45;
+            transform: scale(.7);
+        }
+
+    }
+
+
+    /* ==========================================
+       STATS
+    ========================================== */
+
+    .dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .dashboard-stat-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        padding: 22px;
+
+        border:
+            1px solid rgba(255,255,255,.07);
+
+        border-radius: 20px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(15,27,49,.82),
+                rgba(8,16,31,.82)
+            );
+
+        backdrop-filter: blur(18px);
+
+        transition:
+            transform .35s cubic-bezier(.2,.8,.2,1),
+            border-color .3s ease,
+            box-shadow .3s ease;
+    }
+
+    .dashboard-stat-card:hover {
+        transform: translateY(-7px);
+        border-color: rgba(96,165,250,.22);
+        box-shadow: 0 22px 45px rgba(0,0,0,.25);
+    }
+
+    .dashboard-stat-icon {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        border-radius: 14px;
+
+        font-size: 1.15rem;
+    }
+
+    .stat-blue .dashboard-stat-icon {
+        color: #60a5fa;
+        background: rgba(59,130,246,.13);
+    }
+
+    .stat-purple .dashboard-stat-icon {
+        color: #a78bfa;
+        background: rgba(139,92,246,.13);
+    }
+
+    .stat-green .dashboard-stat-icon {
+        color: #4ade80;
+        background: rgba(34,197,94,.13);
+    }
+
+    .stat-cyan .dashboard-stat-icon {
+        color: #22d3ee;
+        background: rgba(34,211,238,.13);
+    }
+
+    .dashboard-stat-card span {
+        display: block;
+        color: #64748b;
+        font-size: .62rem;
+        text-transform: uppercase;
+        letter-spacing: .7px;
+        font-weight: 800;
+    }
+
+    .dashboard-stat-card h3 {
+        margin: 4px 0 1px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 800;
+    }
+
+    .dashboard-stat-card small {
+        color: #536176;
+        font-size: .62rem;
+    }
+
+
+    /* ==========================================
+       MAIN GLASS CARD
+    ========================================== */
+
+    .students-glass-card {
+        overflow: hidden;
+
+        border:
+            1px solid rgba(255,255,255,.08);
+
+        border-radius: 25px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(13,25,46,.90),
+                rgba(7,15,29,.92)
+            );
+
+        box-shadow:
+            0 30px 75px rgba(0,0,0,.28);
+    }
+
+    .students-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 25px 28px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.07);
+    }
+
+    .students-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .table-main-icon {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 14px;
+
+        color: #60a5fa;
+
+        background:
+            rgba(59,130,246,.13);
+
+        box-shadow:
+            0 10px 25px rgba(37,99,235,.10);
+    }
+
+    .section-eyebrow-small {
+        color: #607087;
+        font-size: .58rem;
+        font-weight: 850;
+        letter-spacing: 1.4px;
+    }
+
+    .students-title-wrapper h2 {
+        margin: 3px 0;
+        color: white;
+        font-size: 1.15rem;
+        font-weight: 800;
+    }
+
+    .students-title-wrapper p {
+        margin: 0;
+        color: #64748b;
+        font-size: .67rem;
+    }
+
+    .records-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+
+        padding: 8px 12px;
+
+        border:
+            1px solid rgba(96,165,250,.13);
+
+        border-radius: 10px;
+
+        color: #93c5fd;
+        background: rgba(59,130,246,.07);
+
+        font-size: .63rem;
+        font-weight: 700;
+    }
+
+
+    /* ==========================================
+       TABLE
+    ========================================== */
+
+    .modern-table-wrapper {
+        width: 100%;
+    }
+
+    .modern-student-table {
+        width: 100%;
+        border-collapse: collapse;
+        color: #cbd5e1;
+    }
+
+    .modern-student-table thead {
+        background: rgba(255,255,255,.025);
+    }
+
+    .modern-student-table th {
+        padding: 15px 20px;
+
+        color: #59677b;
+
+        font-size: .60rem;
+        font-weight: 850;
+        letter-spacing: .9px;
+        text-transform: uppercase;
+
+        white-space: nowrap;
+    }
+
+    .modern-student-table td {
+        padding: 17px 20px;
+
+        border-top:
+            1px solid rgba(255,255,255,.045);
+
+        font-size: .72rem;
+        vertical-align: middle;
+    }
+
+    .student-row {
+        transition:
+            background .25s ease,
+            transform .25s ease;
+    }
+
+    .student-row:hover {
+        background:
+            rgba(59,130,246,.045);
+    }
+
+    .student-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .student-avatar-modern {
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        border-radius: 13px;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+        font-weight: 800;
+
+        box-shadow:
+            0 8px 20px rgba(37,99,235,.20);
+
+        transition:
+            transform .3s ease;
+    }
+
+    .student-row:hover .student-avatar-modern {
+        transform:
+            translateY(-2px)
+            rotate(-4deg)
+            scale(1.05);
+    }
+
+    .student-info strong {
+        display: block;
+        color: #f1f5f9;
+        font-size: .76rem;
+    }
+
+    .student-info small {
+        display: block;
+        margin-top: 3px;
+        color: #536176;
+        font-size: .60rem;
+    }
+
+    .student-email {
+        color: #7db2ff;
+        white-space: nowrap;
+    }
+
+    .student-email i {
+        margin-right: 5px;
+    }
+
+    .student-secondary {
+        color: #7d8ba0;
+    }
+
+    .student-secondary i {
+        color: #64748b;
+        margin-right: 4px;
+    }
+
+    .modern-age-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 34px;
+
+        padding: 5px 8px;
+
+        border-radius: 8px;
+
+        color: #93c5fd;
+        background: rgba(59,130,246,.10);
+
+        font-weight: 750;
+    }
+
+
+    /* ==========================================
+       ACTION BUTTONS
+    ========================================== */
+
+    .modern-action-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 7px;
+    }
+
+    .modern-action {
+        width: 35px;
+        height: 35px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 10px;
+
+        transition:
+            transform .25s ease,
+            box-shadow .25s ease;
+    }
+
+    .modern-action:hover {
+        transform:
+            translateY(-3px)
+            scale(1.05);
+    }
+
+    .modern-action.view {
+        color: #60a5fa;
+        background: rgba(59,130,246,.10);
+    }
+
+    .modern-action.edit {
+        color: #a78bfa;
+        background: rgba(139,92,246,.10);
+    }
+
+    .modern-action.delete {
+        color: #f87171;
+        background: rgba(239,68,68,.10);
+    }
+
+
+    /* ==========================================
+       EMPTY STATE
+    ========================================== */
+
+    .modern-empty-state {
+        padding: 85px 25px;
+        text-align: center;
+    }
+
+    .empty-floating-icon {
+        width: 75px;
+        height: 75px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin: auto;
+
+        border-radius: 22px;
+
+        color: #60a5fa;
+
+        background:
+            rgba(59,130,246,.09);
+
+        font-size: 1.7rem;
+
+        animation:
+            emptyFloat 4s ease-in-out infinite;
+    }
+
+    @@keyframes emptyFloat {
+
+        0%,100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-8px);
+        }
+
+    }
+
+    .modern-empty-state h3 {
+        margin-top: 20px;
+        color: white;
+        font-size: 1.15rem;
+    }
+
+    .modern-empty-state p {
+        color: #64748b;
+        font-size: .75rem;
+    }
+
+
+    /* ==========================================
+       BOTTOM INFO
+    ========================================== */
+
+    .dashboard-bottom-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        margin-top: 18px;
+        padding: 18px 22px;
+
+        border:
+            1px solid rgba(255,255,255,.06);
+
+        border-radius: 18px;
+
+        background:
+            rgba(12,22,41,.55);
+    }
+
+    .dashboard-bottom-info > div:first-child {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .dashboard-bottom-info > div:first-child > i {
+        color: #4ade80;
+        font-size: 1.1rem;
+    }
+
+    .dashboard-bottom-info strong {
+        display: block;
+        color: #dbeafe;
+        font-size: .70rem;
+    }
+
+    .dashboard-bottom-info span {
+        display: block;
+        margin-top: 3px;
+        color: #59677b;
+        font-size: .60rem;
+    }
+
+    .system-status {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: #6ee7a0;
+        font-size: .63rem;
+        font-weight: 700;
+    }
+
+    .system-status span {
+        width: 7px;
+        height: 7px;
+        margin: 0;
+
+        border-radius: 50%;
+
+        background: #22c55e;
+
+        box-shadow:
+            0 0 10px rgba(34,197,94,.7);
+    }
+
+
+    /* ==========================================
+       RESPONSIVE
+    ========================================== */
+
+    @@media (max-width: 992px) {
+
+        .dashboard-stats {
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        .dashboard-hero {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+    }
+
+    @@media (max-width: 768px) {
+
+        .dashboard-stats {
+            grid-template-columns: 1fr;
+        }
+
+        .students-card-header {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dashboard-bottom-info {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+    }
+
+</style>

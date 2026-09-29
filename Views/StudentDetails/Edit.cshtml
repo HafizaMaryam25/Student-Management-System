@@ -1,0 +1,792 @@
+﻿@model StudentManagementSystem.Models.StudentDetail
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="edit-page">
+
+    <div class="container py-5">
+
+        <!-- HEADER -->
+
+        <div class="edit-page-header animate-edit">
+
+            <div>
+
+                <div class="edit-eyebrow">
+                    <span class="status-dot"></span>
+                    STUDENT MANAGEMENT
+                </div>
+
+                <h1>
+                    Edit Student
+                </h1>
+
+                <p>
+                    Update the student's information
+                    and keep the profile records up to date.
+                </p>
+
+            </div>
+
+            <a asp-action="Details"
+               asp-route-id="@Model.Id"
+               class="glass-back-btn">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back to Profile
+
+            </a>
+
+        </div>
+
+
+        <!-- FORM CARD -->
+
+        <div class="premium-edit-card animate-edit delay-edit-1">
+
+            <div class="edit-card-header">
+
+                <div class="edit-main-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+
+                <div>
+
+                    <div class="edit-small-label">
+                        PROFILE SETTINGS
+                    </div>
+
+                    <h2>
+                        Update Student Information
+                    </h2>
+
+                    <p>
+                        Make changes to the student's profile below.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form asp-action="Edit">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="premium-validation">
+                </div>
+
+                <input type="hidden"
+                       asp-for="Id" />
+
+
+                <div class="row g-4 mt-1">
+
+                    <!-- FULL NAME -->
+
+                    <div class="col-md-6">
+
+                        <label asp-for="FullName"
+                               class="premium-form-label">
+
+                            <i class="bi bi-person-fill"></i>
+
+                            Full Name
+
+                        </label>
+
+                        <div class="premium-input-wrapper">
+
+                            <i class="bi bi-person"></i>
+
+                            <input asp-for="FullName"
+                                   class="form-control premium-input"
+                                   placeholder="Enter full name" />
+
+                        </div>
+
+                        <span asp-validation-for="FullName"
+                              class="premium-error">
+                        </span>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="col-md-6">
+
+                        <label asp-for="Email"
+                               class="premium-form-label">
+
+                            <i class="bi bi-envelope-fill"></i>
+
+                            Email Address
+
+                        </label>
+
+                        <div class="premium-input-wrapper">
+
+                            <i class="bi bi-envelope"></i>
+
+                            <input asp-for="Email"
+                                   class="form-control premium-input"
+                                   placeholder="Enter email address" />
+
+                        </div>
+
+                        <span asp-validation-for="Email"
+                              class="premium-error">
+                        </span>
+
+                    </div>
+
+
+                    <!-- FATHER NAME -->
+
+                    <div class="col-md-6">
+
+                        <label asp-for="FatherName"
+                               class="premium-form-label">
+
+                            <i class="bi bi-person-badge-fill"></i>
+
+                            Father's Name
+
+                        </label>
+
+                        <div class="premium-input-wrapper">
+
+                            <i class="bi bi-person"></i>
+
+                            <input asp-for="FatherName"
+                                   class="form-control premium-input"
+                                   placeholder="Enter father's name" />
+
+                        </div>
+
+                        <span asp-validation-for="FatherName"
+                              class="premium-error">
+                        </span>
+
+                    </div>
+
+
+                    <!-- CONTACT -->
+
+                    <div class="col-md-6">
+
+                        <label asp-for="Contact"
+                               class="premium-form-label">
+
+                            <i class="bi bi-telephone-fill"></i>
+
+                            Contact Number
+
+                        </label>
+
+                        <div class="premium-input-wrapper">
+
+                            <i class="bi bi-telephone"></i>
+
+                            <input asp-for="Contact"
+                                   class="form-control premium-input"
+                                   placeholder="03XX XXXXXXX" />
+
+                        </div>
+
+                        <span asp-validation-for="Contact"
+                              class="premium-error">
+                        </span>
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="col-md-8">
+
+                        <label asp-for="Address"
+                               class="premium-form-label">
+
+                            <i class="bi bi-geo-alt-fill"></i>
+
+                            Address
+
+                        </label>
+
+                        <div class="premium-input-wrapper">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            <input asp-for="Address"
+                                   class="form-control premium-input"
+                                   placeholder="Street, City, Country" />
+
+                        </div>
+
+                        <span asp-validation-for="Address"
+                              class="premium-error">
+                        </span>
+
+                    </div>
+
+
+                    <!-- AGE -->
+
+                    <div class="col-md-4">
+
+                        <label asp-for="Age"
+                               class="premium-form-label">
+
+                            <i class="bi bi-calendar-event-fill"></i>
+
+                            Age
+
+                        </label>
+
+                        <div class="premium-input-wrapper">
+
+                            <i class="bi bi-calendar"></i>
+
+                            <input asp-for="Age"
+                                   class="form-control premium-input"
+                                   type="number"
+                                   placeholder="Age" />
+
+                        </div>
+
+                        <span asp-validation-for="Age"
+                              class="premium-error">
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORM ACTIONS -->
+
+                <div class="edit-form-footer">
+
+                    <a asp-action="Details"
+                       asp-route-id="@Model.Id"
+                       class="glass-action-btn">
+
+                        <i class="bi bi-x-lg"></i>
+
+                        Cancel
+
+                    </a>
+
+
+                    <button type="submit"
+                            class="premium-save-btn">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- SECURITY INFO -->
+
+        <div class="edit-security-info animate-edit delay-edit-2">
+
+            <i class="bi bi-shield-check"></i>
+
+            <div>
+
+                <strong>
+                    Secure Profile Update
+                </strong>
+
+                <span>
+                    Your changes will be saved securely
+                    to the student management system.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
+
+
+<style>
+
+    .edit-page {
+        min-height: 90vh;
+
+        background:
+            radial-gradient(
+                circle at 15% 10%,
+                rgba(59,130,246,.09),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 90% 50%,
+                rgba(139,92,246,.07),
+                transparent 30%
+            );
+    }
+
+    .animate-edit {
+        animation:
+            editEnter .7s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .delay-edit-1 {
+        animation-delay: .12s;
+    }
+
+    .delay-edit-2 {
+        animation-delay: .22s;
+    }
+
+    @@keyframes editEnter {
+
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+
+    /* HEADER */
+
+    .edit-page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        gap: 30px;
+
+        margin-bottom: 35px;
+    }
+
+    .edit-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+
+        margin-bottom: 14px;
+
+        color: #8db8ff;
+
+        font-size: .64rem;
+        font-weight: 850;
+        letter-spacing: 1.6px;
+    }
+
+    .edit-page-header h1 {
+        margin: 0;
+
+        color: white;
+
+        font-size:
+            clamp(2.7rem,5vw,4.8rem);
+
+        line-height: .98;
+
+        letter-spacing: -3px;
+
+        font-weight: 850;
+    }
+
+    .edit-page-header h1 span {
+        display: block;
+
+        background:
+            linear-gradient(
+                100deg,
+                #70a9ff,
+                #22d3ee 45%,
+                #a78bfa
+            );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+    }
+
+    .edit-page-header p {
+        max-width: 550px;
+
+        margin: 17px 0 0;
+
+        color: #77869b;
+
+        font-size: .82rem;
+
+        line-height: 1.8;
+    }
+
+
+    /* CARD */
+
+    .premium-edit-card {
+        padding: 35px;
+
+        border:
+            1px solid rgba(255,255,255,.08);
+
+        border-radius: 27px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(14,27,49,.91),
+                rgba(7,15,29,.93)
+            );
+
+        box-shadow:
+            0 35px 90px rgba(0,0,0,.30);
+    }
+
+    .edit-card-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        padding-bottom: 25px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.07);
+    }
+
+    .edit-main-icon {
+        width: 52px;
+        height: 52px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 15px;
+
+        color: #a78bfa;
+
+        background:
+            rgba(139,92,246,.13);
+
+        font-size: 1.25rem;
+
+        animation:
+            iconFloatEdit 4s ease-in-out infinite;
+    }
+
+    @@keyframes iconFloatEdit {
+
+        0%,100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+
+    }
+
+    .edit-small-label {
+        color: #607087;
+
+        font-size: .57rem;
+
+        font-weight: 850;
+
+        letter-spacing: 1.4px;
+    }
+
+    .edit-card-header h2 {
+        margin: 4px 0;
+
+        color: white;
+
+        font-size: 1.15rem;
+
+        font-weight: 800;
+    }
+
+    .edit-card-header p {
+        margin: 0;
+
+        color: #64748b;
+
+        font-size: .67rem;
+    }
+
+
+    /* FORM */
+
+    .premium-form-label {
+        display: block;
+
+        margin-bottom: 8px;
+
+        color: #cbd5e1;
+
+        font-size: .68rem;
+
+        font-weight: 750;
+    }
+
+    .premium-form-label i {
+        margin-right: 5px;
+        color: #60a5fa;
+    }
+
+    .premium-input-wrapper {
+        position: relative;
+    }
+
+    .premium-input-wrapper > i {
+        position: absolute;
+
+        left: 14px;
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        color: #536176;
+
+        pointer-events: none;
+
+        transition: color .25s ease;
+    }
+
+    .premium-input {
+        min-height: 47px;
+
+        padding:
+            11px
+            14px
+            11px
+            40px !important;
+
+        border:
+            1px solid rgba(255,255,255,.09) !important;
+
+        border-radius: 12px !important;
+
+        color: white !important;
+
+        background:
+            rgba(255,255,255,.035) !important;
+
+        box-shadow: none !important;
+
+        transition:
+            border-color .25s ease,
+            background .25s ease,
+            box-shadow .25s ease,
+            transform .25s ease;
+    }
+
+    .premium-input::placeholder {
+        color: #536176 !important;
+    }
+
+    .premium-input:focus {
+        border-color:
+            rgba(96,165,250,.65) !important;
+
+        background:
+            rgba(255,255,255,.055) !important;
+
+        box-shadow:
+            0 0 0 3px rgba(59,130,246,.10) !important;
+    }
+
+    .premium-input-wrapper:focus-within > i {
+        color: #60a5fa;
+    }
+
+    .premium-error {
+        display: block;
+
+        margin-top: 5px;
+
+        color: #f87171;
+
+        font-size: .62rem;
+    }
+
+    .premium-validation {
+        margin-top: 20px;
+
+        color: #f87171;
+
+        font-size: .70rem;
+    }
+
+
+    /* FOOTER */
+
+    .edit-form-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 15px;
+
+        margin-top: 32px;
+        padding-top: 23px;
+
+        border-top:
+            1px solid rgba(255,255,255,.07);
+    }
+
+    .glass-action-btn,
+    .premium-save-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        min-height: 45px;
+
+        padding: 10px 18px;
+
+        border-radius: 11px;
+
+        font-size: .70rem;
+
+        font-weight: 750;
+
+        transition: all .3s ease;
+    }
+
+    .glass-action-btn {
+        color: #b8c5d6 !important;
+
+        border:
+            1px solid rgba(255,255,255,.10);
+
+        background:
+            rgba(255,255,255,.035);
+    }
+
+    .glass-action-btn:hover {
+        color: white !important;
+        transform: translateY(-3px);
+        background: rgba(255,255,255,.07);
+    }
+
+    .premium-save-btn {
+        border:
+            1px solid rgba(255,255,255,.12);
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #4f8cff
+            );
+
+        box-shadow:
+            0 12px 30px rgba(37,99,235,.24);
+    }
+
+    .premium-save-btn:hover {
+        transform: translateY(-4px);
+
+        box-shadow:
+            0 18px 40px rgba(37,99,235,.38);
+    }
+
+
+    /* SECURITY */
+
+    .edit-security-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        margin-top: 17px;
+
+        padding: 17px 20px;
+
+        border:
+            1px solid rgba(34,197,94,.10);
+
+        border-radius: 16px;
+
+        background:
+            rgba(34,197,94,.035);
+    }
+
+    .edit-security-info > i {
+        color: #4ade80;
+        font-size: 1.05rem;
+    }
+
+    .edit-security-info strong {
+        display: block;
+
+        color: #cbd5e1;
+
+        font-size: .67rem;
+    }
+
+    .edit-security-info span {
+        display: block;
+
+        margin-top: 3px;
+
+        color: #56657a;
+
+        font-size: .59rem;
+    }
+
+
+    @@media(max-width:768px) {
+
+        .edit-page-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .edit-form-footer {
+            align-items: stretch;
+            flex-direction: column-reverse;
+        }
+
+        .glass-action-btn,
+        .premium-save-btn {
+            width: 100%;
+        }
+
+    }
+
+</style>

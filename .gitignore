@@ -1,0 +1,95 @@
+# ==============================
+# Visual Studio / .NET
+# ==============================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+artifacts/
+publish/
+
+# Logs / temporary files
+[Ll]og/
+[Ll]ogs/
+*.log
+*.tmp
+*.cache
+*.pdb
+
+# ==============================
+# NuGet
+# ==============================
+*.nupkg
+*.snupkg
+packages/
+
+# ==============================
+# VS Code
+# ==============================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# ==============================
+# IDE / OS
+# ==============================
+.idea/
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Firebase / Secrets
+# ==============================
+
+# Firebase service account
+firebase-service-account.json
+**/firebase-service-account.json
+
+# Other secret/config files
+secrets.json
+secrets.*.json
+.env
+.env.*
+!.env.example
+
+# Local development configuration
+appsettings.Local.json
+appsettings.Development.local.json
+
+# ==============================
+# Local Databases
+# ==============================
+*.db
+*.db-shm
+*.db-wal
+*.mdf
+*.ldf
+*.ndf
+
+# ==============================
+# Test / Coverage
+# ==============================
+TestResults/
+[Tt]est[Rr]esult*/
+coverage/
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# ==============================
+# Publish Profiles
+# ==============================
+*.pubxml
+*.publishproj
+*.publishsettings
+PublishScripts/

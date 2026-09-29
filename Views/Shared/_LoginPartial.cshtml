@@ -1,0 +1,462 @@
+```html
+<ul class="navbar-nav stylish-auth-nav">
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <!-- Logged in user -->
+
+        <li class="nav-item user-greeting">
+
+            <div class="user-profile-pill">
+
+                <div class="user-avatar">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <div class="user-info">
+
+                    <span class="user-label">
+                        Welcome back
+                    </span>
+
+                    <span class="user-name">
+                        @User.Identity.Name
+                    </span>
+
+                </div>
+
+            </div>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <form method="post"
+                  asp-area="Identity"
+                  asp-page="/Account/Logout"
+                  class="logout-form">
+
+                <button type="submit"
+                        class="logout-btn">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    <span>Logout</span>
+
+                </button>
+
+            </form>
+
+        </li>
+    }
+    else
+    {
+        <!-- Not logged in -->
+
+        <li class="nav-item">
+
+            <a class="auth-nav-btn register-btn"
+               asp-area="Identity"
+               asp-page="/Account/Register">
+
+                <i class="bi bi-person-plus"></i>
+
+                <span>Register</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <a class="auth-nav-btn login-btn"
+               asp-area="Identity"
+               asp-page="/Account/Login">
+
+                <i class="bi bi-box-arrow-in-right"></i>
+
+                <span>Login</span>
+
+            </a>
+
+        </li>
+    }
+
+</ul>
+
+
+<style>
+
+    /* ==========================================
+       AUTH NAVIGATION
+    ========================================== */
+
+    .stylish-auth-nav {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+    }
+
+
+    /* ==========================================
+       USER PROFILE
+    ========================================== */
+
+    .user-profile-pill {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+
+        padding: 6px 12px 6px 6px;
+
+        border: 1px solid rgba(255,255,255,.08);
+
+        border-radius: 13px;
+
+        background:
+            rgba(255,255,255,.035);
+
+        backdrop-filter: blur(14px);
+
+        transition:
+            all .3s ease;
+
+    }
+
+
+    .user-profile-pill:hover {
+
+        transform: translateY(-2px);
+
+        border-color:
+            rgba(96,165,250,.25);
+
+        background:
+            rgba(255,255,255,.055);
+
+        box-shadow:
+            0 10px 30px rgba(0,0,0,.20);
+
+    }
+
+
+    .user-avatar {
+
+        width: 34px;
+        height: 34px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 10px;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
+        font-size: .82rem;
+
+        box-shadow:
+            0 6px 18px rgba(37,99,235,.25);
+
+        transition:
+            transform .3s ease;
+
+    }
+
+
+    .user-profile-pill:hover .user-avatar {
+
+        transform:
+            rotate(-5deg)
+            scale(1.05);
+
+    }
+
+
+    .user-info {
+
+        display: flex;
+
+        flex-direction: column;
+
+        line-height: 1.15;
+
+    }
+
+
+    .user-label {
+
+        color: #64748b;
+
+        font-size: .52rem;
+
+        font-weight: 700;
+
+        letter-spacing: .4px;
+
+    }
+
+
+    .user-name {
+
+        max-width: 130px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+
+        color: #dbeafe;
+
+        font-size: .67rem;
+
+        font-weight: 750;
+
+    }
+
+
+    /* ==========================================
+       LOGOUT
+    ========================================== */
+
+    .logout-form {
+
+        margin: 0;
+
+    }
+
+
+    .logout-btn {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 7px;
+
+        min-height: 38px;
+
+        padding: 8px 13px;
+
+        border:
+            1px solid rgba(248,113,113,.12);
+
+        border-radius: 10px;
+
+        color: #fca5a5;
+
+        background:
+            rgba(239,68,68,.055);
+
+        font-size: .64rem;
+
+        font-weight: 750;
+
+        cursor: pointer;
+
+        transition:
+            all .3s ease;
+
+    }
+
+
+    .logout-btn i {
+
+        font-size: .78rem;
+
+    }
+
+
+    .logout-btn:hover {
+
+        color: white;
+
+        border-color:
+            rgba(248,113,113,.28);
+
+        background:
+            rgba(239,68,68,.13);
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 10px 25px rgba(239,68,68,.12);
+
+    }
+
+
+    /* ==========================================
+       LOGIN / REGISTER
+    ========================================== */
+
+    .auth-nav-btn {
+
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 7px;
+
+        min-height: 38px;
+
+        padding: 8px 14px;
+
+        border-radius: 10px;
+
+        text-decoration: none !important;
+
+        font-size: .64rem;
+
+        font-weight: 750;
+
+        transition:
+            transform .3s ease,
+            box-shadow .3s ease,
+            background .3s ease,
+            border-color .3s ease;
+
+    }
+
+
+    .auth-nav-btn i {
+
+        font-size: .76rem;
+
+    }
+
+
+    /* REGISTER */
+
+    .register-btn {
+
+        color: #b8c5d6 !important;
+
+        border:
+            1px solid rgba(255,255,255,.09);
+
+        background:
+            rgba(255,255,255,.035);
+
+    }
+
+
+    .register-btn:hover {
+
+        color: white !important;
+
+        border-color:
+            rgba(96,165,250,.25);
+
+        background:
+            rgba(255,255,255,.065);
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,.18);
+
+    }
+
+
+    /* LOGIN */
+
+    .login-btn {
+
+        color: white !important;
+
+        border:
+            1px solid rgba(96,165,250,.20);
+
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #4f8cff
+            );
+
+        box-shadow:
+            0 8px 22px rgba(37,99,235,.20);
+
+    }
+
+
+    .login-btn:hover {
+
+        color: white !important;
+
+        transform:
+            translateY(-3px);
+
+        box-shadow:
+            0 14px 32px rgba(37,99,235,.35);
+
+    }
+
+
+    /* ==========================================
+       MOBILE
+    ========================================== */
+
+    @@media (max-width: 991px) {
+
+        .stylish-auth-nav {
+
+            align-items: stretch;
+
+            gap: 8px;
+
+            margin-top: 12px;
+
+        }
+
+
+        .user-profile-pill {
+
+            width: 100%;
+
+        }
+
+
+        .user-name {
+
+            max-width: 200px;
+
+        }
+
+
+        .auth-nav-btn,
+        .logout-btn {
+
+            width: 100%;
+
+        }
+
+    }
+
+</style>
+
