@@ -259,22 +259,6 @@ Production secrets should be managed through environment variables or a secure s
 
 ---
 
-## 📸 Screenshots
-
-Screenshots can be added to showcase the application's interface.
-
-Recommended screenshots:
-
-```text
-docs/
-├── login.png
-├── registration.png
-├── student-dashboard.png
-├── student-profile.png
-└── admin-dashboard.png
-```
-
----
 
 ## 📦 Project Status
 
